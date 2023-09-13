@@ -17,6 +17,12 @@ const handleSubmit = (event) => {
   setTask("")
 }
 
+const handleDel = (e) => {
+  let name = e.target.getAttribute("name")
+  setTodos(todos.filter(task => task.name !== name))
+}
+
+
 
   return (
     <div>
@@ -39,6 +45,9 @@ const handleSubmit = (event) => {
             todos.map((todo) => (
               <div key={crypto.randomUUID()}>
                 {todo.name}
+                <button onClick={handleDel} name={todo.name}>
+                  delete todo
+                </button>
               </div>
             ))
           }
